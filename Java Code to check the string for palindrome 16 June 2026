@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter marks of student: ");
+        int marks = sc.nextInt();
+        
+        System.out.print("Grade: ");
+        
+        if (marks >= 97) {  // 96+ = O
+            System.out.println("O");
+        }
+        else if (marks >= 88 && marks <= 96) {
+            System.out.println("A+");
+        }
+        else if (marks >= 81 && marks <= 87) {
+            System.out.println("A");
+        }
+        else if (marks >= 76 && marks <= 80) {
+            System.out.println("B+");
+        }
+        else if (marks >= 70 && marks <= 75) {
+            System.out.println("C+");
+        }
+        else if (marks >= 60 && marks <= 69) {
+            System.out.println("C");
+        }
+        else if (marks >= 50 && marks <= 59) {
+            System.out.println("D+");
+        }
+        else if (marks >= 40 && marks <= 49) {
+            System.out.println("D");
+        }
+        else {
+            System.out.println("Fail / Invalid marks");
+        }
+        
+        sc.close();
+    }
+}
