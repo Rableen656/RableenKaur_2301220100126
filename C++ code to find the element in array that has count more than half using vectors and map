@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <map>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> arr(n);
+    map<int, int> freq;
+
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+        freq[arr[i]]++;
+    }
+
+    int majority = -1;
+
+    for(auto it : freq) {
+        if(it.second > n / 2) {
+            majority = it.first;
+            break;
+        }
+    }
+
+    if(majority != -1)
+        cout << "Majority Element = " << majority;
+    else
+        cout << "No Majority Element Found";
+
+    return 0;
+}
