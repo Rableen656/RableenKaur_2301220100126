@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        int n = nums.size();
+        int drops = 0;
+
+        for(int i = 0; i < n; i++) {
+            // i ke baad wala element. n-1 ke baad 0 aa jayega circular
+            if(nums[i] > nums[(i+1) % n]) {
+                drops++;
+            }
+        }
+        // 0 drop = sorted, 1 drop = sorted + rotated
+        return drops <= 1;
+    }
+};
