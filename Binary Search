@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to perform Binary Search on a sorted array
+// Returns the index of target if found, otherwise returns -1
+int binarySearch(vector<int>& nums, int target) {
+    int left = 0; // Start of the search range
+    int right = nums.size() - 1; // End of the search range
+
+    // Continue searching while the range is valid
+    while(left <= right) {
+        // Calculate middle index to avoid overflow: left + (right - left) / 2
+        int mid = left + (right - left) / 2;
+
+        // Case 1: Target found at middle
+        if(nums[mid] == target) {
+            return mid; // Return the index of target
+        }
+        // Case 2: Target is smaller, search in left half
+        else if(nums[mid] > target) {
+            right = mid - 1; // Move right pointer to left of mid
+        }
+        // Case 3: Target is larger, search in right half
+        else {
+            left = mid + 1; // Move left pointer to right of mid
+        }
+    }
+
+    // Target not found in the array
+    return -1;
+}
+
+int main() {
+    // Array must be sorted for Binary Search to work
+    vector<int> nums = {2, 4, 6, 8, 10, 12, 14, 16};
+    int target = 10;
+
+    int index = binarySearch(nums, target);
+
+    // Print result based on whether target was found
+    if(index!= -1)
+        cout << target << " found at index " << index << endl;
+    else
+        cout << target << " not found in the array" << endl;
+
+    return 0;
+}
+// Output: 10 found at index 4
